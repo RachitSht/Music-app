@@ -3,16 +3,25 @@ package com.example.mymusicapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class customAdapter extends RecyclerView.Adapter<customAdapter.ViewHolder> {
 
     private String[] localDataSet;
+    private ArrayList<File> mySongs = MainActivity.getMySongs();
     Context context;
 
     public customAdapter(String[] localDataSet, Context context) {
@@ -26,12 +35,14 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.ViewHolder
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private final ImageView music_image;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
 
             textView = view.findViewById(R.id.musicList);
+            music_image = view.findViewById(R.id.music_image);
         }
 
         public TextView getTextView() {
@@ -67,6 +78,8 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.ViewHolder
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTextView().setText(localDataSet[position]);
+        viewHolder.music_image.setImageResource(R.drawable.music_note);
+
         viewHolder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +95,5 @@ public class customAdapter extends RecyclerView.Adapter<customAdapter.ViewHolder
     public int getItemCount() {
         return localDataSet.length;
     }
-
 }
 

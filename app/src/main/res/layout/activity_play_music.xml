@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/musicName" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/imageHolder"
         android:layout_width="290dp"
         android:layout_height="201dp"
         android:contentDescription="@string/app_name"
